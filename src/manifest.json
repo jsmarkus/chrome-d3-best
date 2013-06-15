@@ -1,0 +1,15 @@
+{
+	"name": "d3 best comments",
+	"version": "0.0.1",
+	"manifest_version": 2,
+
+	"description": "Bestcomments from d3.ru",
+
+
+	"content_scripts": [{
+			"matches": ["*://*.d3.ru/*"],
+			"css": ["styles/content.css"],
+			"js": ["vendor/jquery/jquery-2.0.2.min.js", "scripts/content.js"]
+		}
+	]
+}
