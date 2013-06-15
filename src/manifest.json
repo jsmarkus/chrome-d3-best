@@ -1,15 +1,18 @@
 {
-	"name": "d3 best comments",
+	"name": "Виджет ненависти для d3.ru",
 	"version": "0.0.1",
 	"manifest_version": 2,
 
-	"description": "Bestcomments from d3.ru",
-
+	"description": "Комментарии умных людей на d3.ru в одном удобном виджете",
 
 	"content_scripts": [{
-			"matches": ["*://*.d3.ru/*"],
+			"matches": ["*://*.d3.ru/comments/*"],
 			"css": ["styles/content.css"],
 			"js": ["vendor/jquery/jquery-2.0.2.min.js", "scripts/content.js"]
 		}
-	]
+	],
+
+	"icons": {
+		"128": "icon/icon128.png"
+	}
 }
