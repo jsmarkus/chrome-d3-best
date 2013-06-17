@@ -14,7 +14,10 @@
 #d3best-comments {
 	transition-property: top, height, width;
 	transition-duration: 0.2s;
-    transition-timing-function: ease;
+	transition-property: top, height, width;
+	-webkit-transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease;
+    -webkit-transition-timing-function: ease;
 }
 
 #d3best-comments:focus {
