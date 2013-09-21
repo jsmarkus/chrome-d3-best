@@ -1,13 +1,13 @@
 {
-  "name": "",
-  "version": "0.0.2",
+  "name": "chrome-d3-best",
+  "version": "0.0.3",
   "private": true,
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-browserify": "~1.0.5",
-    "grunt-contrib-watch": "~0.4.4",
+    "grunt-browserify2": "~0.1.7",
+    "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-compress": "~0.5.2"
   }

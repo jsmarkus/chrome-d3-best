@@ -2,15 +2,17 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        browserify: {
+        browserify2: {
 
             options: {
-                alias: ['components/jquery/jquery.js:jquery']
+                expose: {
+                    jquery: './bower_components/jquery/jquery'
+                }
             },
 
             main: {
-                src: ['src/scripts/content.js'],
-                dest: '.tmp/scripts/content.js'
+                entry: './src/scripts/content',
+                compile: '.tmp/scripts/content.js'
             }
         },
 
@@ -24,34 +26,34 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [{
-                        expand: true,
-                        cwd: 'src/',
-                        dest: 'app/',
-                        filter: 'isFile',
-                        src: [
-                                '**/*.json',
-                                '**/*.png',
-                                '**/*.css'
-                        ]
-                    }
-                ]
+                    expand: true,
+                    cwd: 'src/',
+                    dest: 'app/',
+                    filter: 'isFile',
+                    src: [
+                        '**/*.json',
+                        '**/*.png',
+                        '**/*.css'
+                    ]
+                }]
             }
         },
 
         watch: {
             scripts: {
                 files: [
-                        'src/**/*.js',
-                        'src/**/*.json',
-                        'src/**/*.css'
+                    'src/**/*.js',
+                    'src/**/*.json',
+                    'src/**/*.css'
                 ],
                 tasks: [
-                        'browserify',
-                        'uglify',
-                        'copy'
+                    'browserify2',
+                    'uglify',
+                    'copy'
                 ],
                 options: {
-                    nospawn: true
+                    nospawn: true,
+                    atBegin: true
                 }
             }
         },
@@ -62,12 +64,11 @@ module.exports = function(grunt) {
                     archive: 'dist/webstore.zip'
                 },
                 files: [{
-                        expand: true,
-                        cwd: 'app/',
-                        dest: '.',
-                        src: ['**']
-                    }
-                ]
+                    expand: true,
+                    cwd: 'app/',
+                    dest: '.',
+                    src: ['**']
+                }]
             }
         },
 
@@ -80,12 +81,12 @@ module.exports = function(grunt) {
 
 
 
-    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-browserify2');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-compress');
 
-    grunt.registerTask('default', ['clean', 'browserify', 'uglify', 'copy', 'compress']);
+    grunt.registerTask('default', ['clean', 'browserify2', 'uglify', 'copy', 'compress']);
 };
