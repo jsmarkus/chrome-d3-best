@@ -55,7 +55,7 @@ function resolveCommentDetails(votedNode) {
 function createCommentBox() {
     var $box = $('#d3best-comments');
     if(!$box.length) {
-        $box = $('<div id="d3best-comments" tabindex="1">'+
+        $box = $('<div id="d3best-comments">'+
             '</div>');
         bindEvents($box);
         $('body').append($box);
@@ -63,7 +63,37 @@ function createCommentBox() {
     return $box;
 }
 
+function hasFocus($box) {
+    return $box.hasClass('state-focus');
+}
+
+function setFocus($box) {
+    $box.addClass('state-focus');
+}
+
+function unsetFocus($box) {
+    $box.removeClass('state-focus');
+}
+
 function bindEvents ($box) {
+    $box.on('click', function (e) {
+        if(!hasFocus($box)) {
+            setFocus($box);
+            e.stopImmediatePropagation();
+            e.preventDefault();
+        }
+    });
+    $('body').on('click', ':not(#d3best-comments)',function (e) {
+        if($box.is(e.target) || $box.has(e.target).length) {
+            return;
+        }
+        if(hasFocus($box)) {
+            debugger
+            unsetFocus($box);
+            e.stopImmediatePropagation();
+            e.preventDefault();
+        }
+    });
     $box.on('blur', function () {
         $box[0].scrollTop = 0;
     });

@@ -20,7 +20,7 @@
     -webkit-transition-timing-function: ease;
 }
 
-#d3best-comments:focus {
+#d3best-comments.state-focus {
 	top: 0px;
 	right: 0px;
 	width: 320px;
@@ -56,11 +56,11 @@
 	font-weight: bolder;
 }
 
-#d3best-comments:focus .d3best-comment {
+#d3best-comments.state-focus .d3best-comment {
 	padding: 4px 0;
 }
 
-#d3best-comments:focus .d3best-vote {
+#d3best-comments.state-focus .d3best-vote {
 	padding: 4px 0;
 	width: auto;
 	height: auto;
